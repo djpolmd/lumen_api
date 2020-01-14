@@ -18,6 +18,15 @@ $router->get('/', function () use ($router) {
 $router->group(['middleware' => 'auth'], function () use ($router) {
 
     $router->get('user/profile', function () {
+        return Auth::user();
         // Uses Auth Middleware
     });
+});
+
+//API group
+$router->group(['prefix' => 'api'], function () use ($router) {
+
+    // Matches "/api/register
+    $router->post('register', 'AuthController@register');
+
 });
