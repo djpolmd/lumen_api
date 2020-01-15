@@ -17,7 +17,16 @@
 4. for server start use (@not artisan serve): php -S localhost:8000 -t public 
 5. Feel free to use "artisan db:seed"
 
+6. RESTful description:
+(use POSTMAN or CURL utils)
+ -  "/api/register" : register for new user
+    EX:  curl -i http://localhost:8000/api/login -d email=test@test.com -d password=secret
+  
+  you can get this result:
+   ![Screen logo](/IMG/screen1.png)
 
+  
+  after you can use you token for AUTH connection. 
 NOTE: 
   - lumen with  eloquent, facade 
   And serveral add'ons :

@@ -26,7 +26,10 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 //API group
 $router->group(['prefix' => 'api'], function () use ($router) {
 
-    // Matches "/api/register
+    // Matches "/api/register"
     $router->post('register', 'AuthController@register');
-
+    // Matches "/api/login"
+    $router->post('login', 'AuthController@postLogin');
 });
+
+
