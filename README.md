@@ -16,3 +16,10 @@
 3. composer install && composer update
 4. for server start use (@not artisan serve): php -S localhost:8000 -t public 
 5. Feel free to use "artisan db:seed"
+
+
+NOTE: 
+  - lumen with  eloquent, facade 
+  And serveral add'ons :
+   1. JWT - AUTH https://iwader.co.uk/post/tymon-jwt-auth-with-lumen-5-2
+   2. JWT - lcobucci/jwt is a framework-agnostic PHP library that allows you to issue, parse, and validate JSON Web Tokens based on the RFC 7519. 

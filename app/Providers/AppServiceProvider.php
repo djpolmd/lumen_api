@@ -13,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+//        JWT AUTH : (by djpolmd)
+        $this->app->register(\Tymon\JWTAuth\Providers\LumenServiceProvider::class);
     }
 }
