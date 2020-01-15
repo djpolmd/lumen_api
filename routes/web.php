@@ -15,13 +15,13 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['middleware' => 'auth'], function () use ($router) {
-
-    $router->get('user/profile', function () {
-        return Auth::user();
-        // Uses Auth Middleware
-    });
-});
+//$router->group(['middleware' => 'auth'], function () use ($router) {
+//
+//    $router->get('user/profile', function () {
+//        return Auth::user();
+//        // Uses Auth Middleware
+//    });
+//});
 
 //API group
 $router->group(['prefix' => 'api'], function () use ($router) {
@@ -30,6 +30,13 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('register', 'AuthController@register');
     // Matches "/api/login"
     $router->post('login', 'AuthController@postLogin');
+    // Matches "/api/profile"
+    $router->get('profile', 'UserController@profile');
+    // Matches "/api/users/1"
+    $router->get('users/{id}', 'UserController@singleUser');
+    // Matches "/api/users"
+    $router->get('users', 'UserController@allUsers');
+
 });
 
 

@@ -11,24 +11,30 @@
  
  -----------------
  How to  install.
-1.  Copy git clone Http ...
-2.  cd <project dir> 
+1.  Copy `git clone <Http>` ...
+2.  ` cd <project dir>` 
 3. composer install && composer update
-4. for server start use (@not artisan serve): php -S localhost:8000 -t public 
-5. Feel free to use "artisan db:seed"
+4. for server start use (@not artisan serve): `php -S localhost:8000 -t public` 
+5. Feel free to use `artisan db:seed`
 
 6. RESTful description:
 (use POSTMAN or CURL utils)
- -  "/api/register" : register for new user
-    EX:  curl -i http://localhost:8000/api/login -d email=test@test.com -d password=secret
+ -  `/api/register` : register for new user
+    EX:  `curl -i http://localhost:8000/api/login -d email=test@test.com -d password=secret`
   
   you can get this result:
    ![Screen logo](/IMG/screen1.png)
-
+  after  that you can use you token for AUTH connection.
+    `curl -H "Authorization: Bearer <token>" http://localhost:8000/api/profile`
+  EX: ![Screen2](/IMG/screen2.png)
   
-  after you can use you token for AUTH connection. 
+  Next EX route (with postman use Bearer token):
+   http://localhost:8000/api/users/1
+ `curl -H "Authorization: Bearer <token>" http://localhost:8000/api/users/1`
+   
+   
 NOTE: 
   - lumen with  eloquent, facade 
   And serveral add'ons :
-   1. JWT - AUTH https://iwader.co.uk/post/tymon-jwt-auth-with-lumen-5-2
-   2. JWT - lcobucci/jwt is a framework-agnostic PHP library that allows you to issue, parse, and validate JSON Web Tokens based on the RFC 7519. 
+   1. JWT - AUTH `https://iwader.co.uk/post/tymon-jwt-auth-with-lumen-5-2`
+   2. JWT - `lcobucci/jwt` is a framework-agnostic PHP library that allows you to issue, parse, and validate JSON Web Tokens based on the RFC 7519. 
