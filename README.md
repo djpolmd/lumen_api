@@ -19,8 +19,13 @@
 
 6. RESTful description:
 (use POSTMAN or CURL utils)
- -  `/api/register` : register for new user
-    EX:  `curl -i http://localhost:8000/api/login -d email=test@test.com -d password=secret`
+First step is to register for new user:
+ -  `/api/register` : 
+    `curl -i http://localhost:8000/api/register -d name=John Doe -d email=test2@test2.com -d password=secret -d password_confirmation=secret`
+
+Login:  
+    `curl -i http://localhost:8000/api/login -d email=test@test.com -d password=secret`
+  
   
   you can get this result:
    ![Screen logo](/IMG/screen1.png)
