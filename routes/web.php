@@ -12,7 +12,24 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    $out = '';
+    for($i=0; $i < 40; $i++)
+        {
+            $user_id = \App\User::all()->random()->id;
+            $count = \App\Referral::where('child_ID', '=', $user_id)->count();
+
+            while ($count > 0)
+                {
+                    $user_id = \App\User::all()->random()->id;
+                    $count = \App\Referral::where('child_ID', '=', $user_id)->count();
+                  $out = $out . ' whose in while';
+                }
+
+                $out = $out . ' <br> ' . $user_id . ' - '. $count;
+
+        }
+
+    return $out;
 });
 
 //$router->group(['middleware' => 'auth'], function () use ($router) {
@@ -36,6 +53,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('users/{id}', 'UserController@singleUser');
     // Matches "/api/users"
     $router->get('users', 'UserController@allUsers');
+
+    $router->post('checkout', 'CheckOutController@PostCheckout' );
 
 });
 

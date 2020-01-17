@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReferral extends Migration
+class Referral extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,11 @@ class CreateReferral extends Migration
     {
         Schema::create('referral', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('parent_ID');
-            $table->string('child_ID');
+            $table->integer('parent_ID');
+            $table->integer('child_ID')->unique();
             $table->string('token_url');
+
+            $table->timestamps();
             });
     }
 

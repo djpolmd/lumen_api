@@ -64,8 +64,6 @@ $app->singleton(
      'auth' => App\Http\Middleware\Authenticate::class,
  ]);
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers
