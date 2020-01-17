@@ -21,7 +21,7 @@
 (use POSTMAN or CURL utils)
 First step is to register for new user:
  -  `/api/register` : 
-    `curl -i http://localhost:8000/api/register -d name=John Doe -d email=test2@test2.com -d password=secret -d password_confirmation=secret`
+    `curl -i http://localhost:8000/api/register -d first_name=John last_name=Doe -d email=test2@test2.com -d password=secret -d password_confirmation=secret`
 
 Login:  
     `curl -i http://localhost:8000/api/login -d email=test@test.com -d password=secret`
@@ -37,6 +37,22 @@ Login:
    http://localhost:8000/api/users/1
  `curl -H "Authorization: Bearer <token>" http://localhost:8000/api/users/1`
    
+   The suppling fund is going by link billow: 
+   `http://localhost:8001/api/checkout`
+   consist from follow value from body:
+       - grand_total (int)
+       - status  (array - 'completed');
+   
+   #### Balance calculation 
+   The GetCheckout() method is basically can use for trigiring user 
+   balance calculation and can be organised in queue.
+   
+   `http://localhost:8001/api/getbalance`
+   
+   
+   SUM for `grand_total` field
+   (7079.750000+9617.444444+47314.500000+1874.857143+8116.000000+5.000000+10.000000+20.500000+20.530000+40.530000) :
+   Result :  `{"message":"You total balance is : 74099.111587"}`    
    
 NOTE: 
   - lumen with  eloquent, facade 

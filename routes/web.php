@@ -12,24 +12,10 @@
 */
 
 $router->get('/', function () use ($router) {
-    $out = '';
-    for($i=0; $i < 40; $i++)
-        {
-            $user_id = \App\User::all()->random()->id;
-            $count = \App\Referral::where('child_ID', '=', $user_id)->count();
 
-            while ($count > 0)
-                {
-                    $user_id = \App\User::all()->random()->id;
-                    $count = \App\Referral::where('child_ID', '=', $user_id)->count();
-                  $out = $out . ' whose in while';
-                }
 
-                $out = $out . ' <br> ' . $user_id . ' - '. $count;
-
-        }
-
-    return $out;
+    return " Рекрутер спрашивает у Сократа — знает ли он Пайтон?
+— Знаю ли я?.. Я скажу вам так, пацаны, я знаю, что ничего не знаю ";
 });
 
 //$router->group(['middleware' => 'auth'], function () use ($router) {
@@ -53,8 +39,15 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('users/{id}', 'UserController@singleUser');
     // Matches "/api/users"
     $router->get('users', 'UserController@allUsers');
-
+    // Matches "/api/checkout  - checkout from bank account and supply for local account"
     $router->post('checkout', 'CheckOutController@PostCheckout' );
+
+    // Matches "/api/getbalance   - get balance from current account "
+    $router->get('getbalance', 'CheckOutController@GetCheckout' );
+
+    // Matches "/api/token/N   - register referral relationship "
+
+    $router->get('token/{id}', 'UserController@addReferral');
 
 });
 

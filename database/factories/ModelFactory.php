@@ -1,7 +1,5 @@
 <?php
 
-
-
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -82,6 +80,6 @@ $factory->define(App\Referral::class, function (Faker $faker) {
     return [
         'parent_ID' => User::all()->random()->id,
         'child_ID' => $user_id,
-        'token_url' => 'http://localhost:8000/api/token&' . $user_id,
+        'token_url' => 'http://localhost:8000/api/token/' . $user_id,
     ];
 });

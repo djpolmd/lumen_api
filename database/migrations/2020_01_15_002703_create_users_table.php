@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
+            // for securrety reason once  got any issue adding  zero value or it  can be change;
+            $table->decimal('balance', 20, 6)->default(0);
             $table->timestamps();
         });
     }
