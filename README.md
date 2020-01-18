@@ -61,3 +61,21 @@ NOTE:
   And several add-ons :
    1. JWT - AUTH `https://iwader.co.uk/post/tymon-jwt-auth-with-lumen-5-2`
    2. JWT - `lcobucci/jwt` is a framework-agnostic PHP library that allows you to issue, parse, and validate JSON Web Tokens based on the RFC 7519. 
+
+
+## Git workflow:
+
+#####*   6d15c25      (origin/master) Merge pull request #1 from djpolmd/C&B
+#####|\  
+#####| * e6f74d8      (HEAD -> C&B, origin/C&B) referral adding
+#####| * df7ca34      some commit
+#####| * 9bf76a8       referral sution populate
+#####| * ac3c036      checkout && referral
+#####| * 706e83e      (JWT) referral
+#####| * 473f948      (origin/JWT) add UserController
+#####| * 6600f57      Adding JWT : ok
+#####| * 698137e      add JWT AUTH dependence
+#####|/  
+#####* aa65491        (master) create users ok
+#####* ea02703        add users
+#####* a78f797        first commit scheletron

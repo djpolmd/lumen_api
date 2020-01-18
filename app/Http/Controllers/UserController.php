@@ -68,7 +68,7 @@ class UserController extends Controller
             $user_id = Auth::id();
 
             // Check if I am not referral;
-             $count = my_ref::where('child_ID', '=', $user_id)->count();
+             $count = $my_ref::where('child_ID', '=', $user_id)->count();
 
                 if ($count > 0)
                     {
