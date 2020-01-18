@@ -35,16 +35,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('login', 'AuthController@postLogin');
     // Matches "/api/profile"
     $router->get('profile', 'UserController@profile');
-    // Matches "/api/users/1"
-    $router->get('users/{id}', 'UserController@singleUser');
-    // Matches "/api/users"
-    $router->get('users', 'UserController@allUsers');
-    // Matches "/api/checkout  - checkout from bank account and supply for local account"
+    // Matches "/api/checkout     - checkout from bank account and supply for local account"
     $router->post('checkout', 'CheckOutController@PostCheckout' );
-
     // Matches "/api/getbalance   - get balance from current account "
     $router->get('getbalance', 'CheckOutController@GetCheckout' );
-    // Matches "/api/token/N   - register referral relationship "
+    // Matches "/api/token/N      - register referral relationship "
     $router->get('token/{id}', 'UserController@addReferral');
 
 });

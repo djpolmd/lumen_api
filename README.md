@@ -38,11 +38,16 @@ Login:
   EX: ![Screen2](/IMG/screen2.png)
   
  #### Next EXAMPLE is  users route (with postman use Bearer token):
-   http://localhost:8000/api/users/1
- `curl -H "Authorization: Bearer <token>" http://localhost:8000/api/users/1`
+ 
+ Get user profele
+ `curl -H "Authorization: Bearer <token>" http://<host>/api/profile`
    
    The suppling fund is going by link billow: 
+
    `http://<host>/api/checkout`
+  
+  EX: `curl -i "Authorization: Bearer <token>" http://<host>/api/checkout -d grand_total=4.22 -d status=compleated`
+  
    consist from follow value from body:
        - grand_total (int)
        - status  (array - 'completed');
@@ -55,11 +60,9 @@ Login:
    
    ### Register referral relationship
    
-   Matches "/api/token/N   - register referral relationship
+   `http://<host>/api/token/N`   - register referral relationship
    
    There "N" is parent user ID. The child user  can register only one parent. Any child can't be parent for nobody.
-   
-   
    
    SUM for `grand_total` field
    (7079.750000+9617.444444+47314.500000+1874.857143+8116.000000+5.000000+10.000000+20.500000+20.530000+40.530000) :
@@ -67,6 +70,7 @@ Login:
    
 NOTE: 
   - lumen with the eloquent, facade 
+ 
   And several add-ons :
    1. JWT - AUTH `https://iwader.co.uk/post/tymon-jwt-auth-with-lumen-5-2`
    2. JWT - `lcobucci/jwt` is a framework-agnostic PHP library that allows you to issue, parse, and validate JSON Web Tokens based on the RFC 7519. 
@@ -108,6 +112,7 @@ NOTE:
     Есть Хард связь в таблице Referral означяет что приглашонный  реферал не может принадлежать нескольким родителям.
  Это правило определяется как и логикой так и уникальным свойтвом поле таблицы "referral" (uniq). 
 
+Подсёт чекущего баланса (состояние сщёто произходит птолько по заверщённым платежам имеющие статус "completed") 
 В люмен не включины зависимоти Passport, несмотря что мы работаем с JWT можно вызвать и эти зависимости отдельно через композер. 
 Также можно организовать функционал для супер юзер - через сервиз провайдер. Также нужно опредилится с политекой пользователей которую тоже нужно прописать.
  Но это отдельная тема, может скоро выложу в хаб наработки в отдельном проэкте. Политика пользоватей может оперделятся и 
