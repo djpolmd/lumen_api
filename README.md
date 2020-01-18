@@ -21,7 +21,7 @@
 
 (Please use POSTMAN or CURL command from CLI)
 
-####First step is to register for new user:
+#### First step is to register for new user:
  -  `/api/register` : 
     `curl -i http://localhost:8000/api/register -d first_name=John last_name=Doe -d email=test2@test2.com -d password=secret -d password_confirmation=secret`
 
@@ -40,7 +40,9 @@ Login:
  `curl -H "Authorization: Bearer <token>" http://localhost:8000/api/users/1`
    
    The suppling fund is going by link billow: 
+   
    `http://localhost:8001/api/checkout`
+   
    consist from follow value from body:
        - grand_total (int)
        - status  (array - 'completed');
@@ -65,17 +67,19 @@ NOTE:
 
 ## Git workflow:
 
-#####*   6d15c25      (origin/master) Merge pull request #1 from djpolmd/C&B
-#####|\  
-#####| * e6f74d8      (HEAD -> C&B, origin/C&B) referral adding
-#####| * df7ca34      some commit
-#####| * 9bf76a8       referral sution populate
-#####| * ac3c036      checkout && referral
-#####| * 706e83e      (JWT) referral
-#####| * 473f948      (origin/JWT) add UserController
-#####| * 6600f57      Adding JWT : ok
-#####| * 698137e      add JWT AUTH dependence
-#####|/  
-#####* aa65491        (master) create users ok
-#####* ea02703        add users
-#####* a78f797        first commit scheletron
+##### *   6d15c25      (origin/master) Merge pull request #1 from djpolmd/C&B
+##### |\  
+##### | * e6f74d8      (HEAD -> C&B, origin/C&B) referral adding
+##### | * df7ca34      some commit
+##### | * 9bf76a8       referral sution populate
+##### | * ac3c036      checkout && referral
+##### | * 706e83e      (JWT) referral
+##### | * 473f948      (origin/JWT) add UserController
+##### | * 6600f57      Adding JWT : ok
+##### | * 698137e      add JWT AUTH dependence
+##### |/  
+##### * aa65491        (master) create users ok
+##### * ea02703        add users
+##### * a78f797        first commit scheletron
+
+
