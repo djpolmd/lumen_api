@@ -46,7 +46,7 @@ Login:
 
    `http://<host>/api/checkout`
   
-  EX: `curl -i "Authorization: Bearer <token>" http://<host>/api/checkout -d grand_total=4.22 -d status=compleated`
+  EX: `curl -i "Authorization: Bearer <token>" http://<host>/api/checkout -d grand_total=4.22 -d status=completed`
   
    consist from follow value from body:
        - grand_total (int)
@@ -100,19 +100,19 @@ NOTE:
 
 
  ## Описание :
-Приложение является ли демонстративной и не может использоватся как финальное комерчиское приложение. 
-Все материалю использованы выще являюся  property of Open Source: Laravel and PHP Zend Framework, Git -  комюнити.
+`Приложение является демонстративной и не может использоватся как финальное комерчиское приложение. 
+Все материалю использованы выще являюся  property of Open Source: Laravel and PHP Zend Framework, Git -  комюнити.`
 
 
 Для быстрого запуска можно использовать сиды после миграции.  Отыскать коменты в Model factory.
 
    Правило определяюшие партнёров приглашонных  от родителей  находится в  юзер контролере. и не учитывается модельной фабрикой, 
 поскольку не является основной бизнес логикой. Также это надо учитывать, пользуясь сидамы - это не генерируется. 
-Толко в ходе ручьного тестирование. 
+Толко в ходе ручьного тестирование. <br>
     Есть Хард связь в таблице Referral означяет что приглашонный  реферал не может принадлежать нескольким родителям.
  Это правило определяется как и логикой так и уникальным свойтвом поле таблицы "referral" (uniq). 
 
-Подсёт чекущего баланса (состояние сщёто произходит птолько по заверщённым платежам имеющие статус "completed") 
+Подсёт чекущего баланса (состояние сщёто произходит только по заверщённым платежам имеющие статус "completed") 
 В люмен не включины зависимоти Passport, несмотря что мы работаем с JWT можно вызвать и эти зависимости отдельно через композер. 
 Также можно организовать функционал для супер юзер - через сервиз провайдер. Также нужно опредилится с политекой пользователей которую тоже нужно прописать.
  Но это отдельная тема, может скоро выложу в хаб наработки в отдельном проэкте. Политика пользоватей может оперделятся и 
@@ -125,3 +125,19 @@ NOTE:
 - Шаблон модели Checkout взят из Mastercard API  но без реального процессинга.
 - Время сменны токена доступа можно  легко сменить а также добавить запись. 
 
+#EN :
+
+Is the application demonstrative and cannot be used as the final commercial application. All material used above is the property of Open Source: Laravel and PHP Zend Framework, Git - community.
+
+For a quick start, you can use seeds after migration. Find comments in the Model factory.
+
+The rule determining partners inviting from parents is in the user controller. and is not taken into account by the model factory, since it is not the main business logic. Also, this must be taken into account when using seeds  - this is not generated. Only during manual testing. There is a hard link in the Referral table, which means that the referral cannot belong to several parents. This rule is defined both by logic and by the unique property of the "referral" (uniq) table field.
+
+Calculation of the checking balance (the state only occurs for completed payments having the status "completed") The Passport dependencies are not included in the lumen, despite the fact that we work with JWT you can also call these dependencies separately through the composer. It is also possible to organize functionality for a superuser - through a service provider. You also need to determine the user profile, which also needs to be registered. But this is a separate topic, maybe I will soon lay out the developments in the hub in a separate project. User policies can also be determined by a separate front-end server in connection with (vuex - redux).
+
+Farther:
+
+Checkout must be organized in a queue execution log insertion  in Logdash or a Kibana or a better one both.
+Also, calculations from the checkout and recording to the user’s account must also be organized in the queue (FIFO), while the audit module is also needed.
+The Checkout model template is taken from the Mastercard API but without real processing.
+Changeable access token time can be easily changed as well as add a record.
