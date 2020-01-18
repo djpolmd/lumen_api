@@ -44,9 +44,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     // Matches "/api/getbalance   - get balance from current account "
     $router->get('getbalance', 'CheckOutController@GetCheckout' );
-
     // Matches "/api/token/N   - register referral relationship "
-
     $router->get('token/{id}', 'UserController@addReferral');
 
 });

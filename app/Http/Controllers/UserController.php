@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use  App\User;
 use  App\Referral;
-use  App\Checkout;
 
 class UserController extends Controller
 {
@@ -70,10 +69,15 @@ class UserController extends Controller
             // Check if I am not referral;
              $count = $my_ref::where('child_ID', '=', $user_id)->count();
 
-                if ($count > 0)
-                    {
-                        return response()->json(['You cannot add another referral'], 200);
-                    }
+             $parent_count = $my_ref::where('child_ID', '=', $id)->count();
+             if ($parent_count > 0)
+                 {
+                     return response()->json(['You Parent is added as Child'], 200);
+                 }
+             if ($count > 0)
+                {
+                    return response()->json(['You cannot add another Parent referral'], 200);
+                }
                 else
                     {
                         try
@@ -82,16 +86,15 @@ class UserController extends Controller
                             $my_ref->child_ID = $user_id;
                             $my_ref->token_url = 'http://localhost:8000/api/token/' . $user_id;
                             $my_ref->save();
-                            return response()->json(['Referral is added successfully'], 200);
+                            return response()->json(['Referral Parent is added successfully'], 200);
                         }
                             catch (\Exception $e) {
-                                return response()->json(['message' => ('Referal add Failed! for user:' . $user_id . $e->getMessage() )], 409);
+                                return response()->json(['message' => ('Referand add Failed! for user:' . $user_id . $e->getMessage() )], 409);
                         }
                     }
             // End check -------;
         }
         else
             return response()->json(['token_invalid'], 500);
-
     }
 }

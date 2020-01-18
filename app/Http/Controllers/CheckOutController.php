@@ -21,6 +21,8 @@ class CheckOutController extends Controller
      * @return Response
      */
 
+    public $stack = 10;  // Partner  referral percent
+
     private function HaveParent($grand_total, $pay_status)
     {
         $my_ref = new Referral;
@@ -34,9 +36,7 @@ class CheckOutController extends Controller
                 foreach ($subb as $item)
                     {
                         $parent = $item->parent_ID;
-//                        dd($item);
-                        $this->NewCheckout($parent, 'completed', $grand_total / 10 , 'Bonus', $pay_status);
-
+                        $this->NewCheckout($parent, 'completed', $grand_total / $this->stack , 'Bonus', $pay_status);
                     }
 
         }
@@ -64,7 +64,6 @@ class CheckOutController extends Controller
             $out->phone_number = rand(1000, 2);
             $out->notes = Str::random(20);
             $out->save();
-
     }
 
     public function PostCheckout(Request $request)
@@ -95,18 +94,13 @@ class CheckOutController extends Controller
 
             $userId = Auth::id();
             $current_user = User::find($userId);
-//          $AllOuts = Checkout::where('user_id', '=', $userId)->get();
             $AllOuts  = Checkout::select('grand_total')->where('user_id', $userId)->get();
             $out = $AllOuts->sum('grand_total');
             $current_user->balance = $out;
             $current_user->save();
-
             return response()-> json(['message' => ( 'You total balance is :'. ' ' . $out) ], 200);
-
         }  return
                 response()->json(['token_invalid'], 500);
     }
-
-
 }
 
